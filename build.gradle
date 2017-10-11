@@ -48,7 +48,7 @@ allprojects  {
 
 test {
     ignoreFailures = true
-    maxHeapSize = "1g"
+    maxHeapSize = "2g"
 }
 
   dependencies {
