@@ -34,7 +34,7 @@ open class ValuesMapBenchmark {
     @Benchmark
     fun compression(): ValuesMap {
         return ValuesMap.build(true) {
-            appendFiltered(headers) { name, value -> !name.equals(HttpHeaders.ContentLength, true) }
+            appendFiltered(headers) { name, _ -> !name.equals(HttpHeaders.ContentLength, true) }
             append(HttpHeaders.ContentEncoding, "deflate")
         }
     }
