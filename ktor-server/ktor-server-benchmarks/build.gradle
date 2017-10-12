@@ -44,12 +44,13 @@ task runBenchmark(type: JavaExec, dependsOn: 'jmhJar') {
 
     classpath = sourceSets.jmh.runtimeClasspath + jmhJar.outputs.files
     main = mainClassFqName
+    systemProperties['benchmarkClassFqName'] = mainClassFqName
 
     doFirst {
         if (mainClassFqName == null) {
             throw new InvalidUserDataException("Neither benchmarkName nor benchmarkClassFqName property specified (use option -P to assign)")
         }
-        
+
         new File(project.buildDir, 'reports/benchmarks').mkdirs()
     }
 }

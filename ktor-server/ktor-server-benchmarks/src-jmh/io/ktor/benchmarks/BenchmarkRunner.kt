@@ -13,13 +13,12 @@ val jmhOptions = OptionsBuilder()
         .mode(Mode.Throughput)
         .timeUnit(TimeUnit.MILLISECONDS)
         .resultFormat(ResultFormatType.CSV)
-        .result("build/reports/benchmarks/result")
         .forks(1)
 
 class BenchmarkSettings {
-    var threads = 32
+    var threads = 8
     val profilers = mutableListOf<String>()
-    var iterations = 20
+    var iterations = 2
     var iterationTime = 1000L
     val benchmarks = mutableListOf<BenchmarkDescriptor>()
 
@@ -133,6 +132,11 @@ fun runJMH(settings: BenchmarkSettings) {
         settings.benchmarks.forEach { (clazz, method) ->
             val regexp = clazz.name + (method?.let { ".$it" } ?: "")
             include(regexp.replace(".", "\\."))
+        }
+
+        System.getProperty("benchmarkClassFqName")?.let { fqName ->
+            val name = fqName.substringAfterLast('.').removeSuffix("Kt")
+            result("build/reports/benchmarks/$name.csv")
         }
     }
     Runner(options.build()).run()
