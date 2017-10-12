@@ -6,7 +6,7 @@ import org.openjdk.jmh.annotations.*
 
 @State(Scope.Benchmark)
 open class ValuesMapBenchmark {
-    val headers = valuesOf("A" to listOf("B"), "C" to listOf("D"))
+    private val headers = valuesOf("A" to listOf("B"), "C" to listOf("D"))
 
     @Benchmark
     fun valuesOfSingle(): ValuesMap {
@@ -28,7 +28,7 @@ open class ValuesMapBenchmark {
 
     @Benchmark
     fun filter(): ValuesMap {
-        return headers.filter { name, value -> true }
+        return headers.filter { _, _ -> true }
     }
 
     @Benchmark
