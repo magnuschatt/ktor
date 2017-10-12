@@ -16,9 +16,9 @@ val jmhOptions = OptionsBuilder()
         .forks(1)
 
 class BenchmarkSettings {
-    var threads = 8
+    var threads = 32
     val profilers = mutableListOf<String>()
-    var iterations = 2
+    var iterations = 20
     var iterationTime = 1000L
     val benchmarks = mutableListOf<BenchmarkDescriptor>()
 
