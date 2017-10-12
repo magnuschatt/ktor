@@ -1,6 +1,7 @@
 package io.ktor.benchmarks
 
 import org.openjdk.jmh.annotations.*
+import org.openjdk.jmh.results.format.*
 import org.openjdk.jmh.runner.*
 import org.openjdk.jmh.runner.options.*
 import java.lang.reflect.*
@@ -11,6 +12,8 @@ val numberOfOperations = 10000
 val jmhOptions = OptionsBuilder()
         .mode(Mode.Throughput)
         .timeUnit(TimeUnit.MILLISECONDS)
+        .resultFormat(ResultFormatType.CSV)
+        .result("build/reports/benchmarks/result")
         .forks(1)
 
 class BenchmarkSettings {

@@ -40,14 +40,17 @@ task runBenchmark(type: JavaExec, dependsOn: 'jmhJar') {
         mainClassFqName = project.benchmarkClassFqName
     } else if (project.hasProperty('benchmarkName')) {
         mainClassFqName = "io.ktor.benchmarks.${project.benchmarkName}Kt"
-    } else {
-        throw new InvalidUserDataException("Neither benchmarkName nor benchmarkClassFqName property specified (use option -P to assign)")
-    }
-
-    sourceSets.jmh.runtimeClasspath.each {
-        println it
     }
 
     classpath = sourceSets.jmh.runtimeClasspath + jmhJar.outputs.files
     main = mainClassFqName
+
+    doFirst {
+        if (mainClassFqName == null) {
+            throw new InvalidUserDataException("Neither benchmarkName nor benchmarkClassFqName property specified (use option -P to assign)")
+        }
+        
+        new File(project.buildDir, 'reports/benchmarks').mkdirs()
+    }
 }
+
