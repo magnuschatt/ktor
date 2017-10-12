@@ -1,4 +1,4 @@
-package io.ktor.tests
+package io.ktor.benchmarks
 
 import org.openjdk.jmh.annotations.*
 import org.openjdk.jmh.runner.*

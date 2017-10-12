@@ -1,4 +1,4 @@
-package io.ktor.tests
+package io.ktor.benchmarks
 
 import okhttp3.*
 import org.apache.http.client.methods.*

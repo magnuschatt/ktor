@@ -1,11 +1,11 @@
-package io.ktor.tests
+package io.ktor.benchmarks
 
 import io.ktor.http.*
 import io.ktor.util.*
 import org.openjdk.jmh.annotations.*
 
 @State(Scope.Benchmark)
-open class ValuesMapBenchmark {
+class ValuesMapBenchmark {
     private val headers = valuesOf("A" to listOf("B"), "C" to listOf("D"))
 
     @Benchmark

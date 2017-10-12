@@ -1,4 +1,4 @@
-package io.ktor.tests
+package io.ktor.benchmarks
 
 import io.ktor.http.*
 import io.ktor.pipeline.*
@@ -9,7 +9,7 @@ import org.openjdk.jmh.annotations.*
 import java.util.concurrent.*
 
 @State(Scope.Benchmark)
-open class RoutingBenchmark {
+class RoutingBenchmark {
     private val testHost: TestApplicationHost = TestApplicationHost(createTestEnvironment())
 
     @Setup

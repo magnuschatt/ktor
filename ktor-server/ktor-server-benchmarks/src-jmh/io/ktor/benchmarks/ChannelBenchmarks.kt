@@ -1,4 +1,4 @@
-package io.ktor.tests
+package io.ktor.benchmarks
 
 import kotlinx.coroutines.experimental.*
 import io.ktor.cio.*
@@ -9,7 +9,7 @@ import java.nio.channels.*
 import java.nio.file.*
 
 @State(Scope.Benchmark)
-open class ChannelBenchmarks {
+class ChannelBenchmarks {
     val file = listOf(File("test/io/ktor/tests/nio/DeflaterReadChannelTest.kt"),
             File("ktor-server/ktor-server-core-tests/test/io/ktor/tests/nio/DeflaterReadChannelTest.kt")).first(File::exists)
 
